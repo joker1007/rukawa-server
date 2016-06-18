@@ -1,0 +1,18 @@
+%html
+  %head
+    %title Rukawa Server
+    %meta{charset: "UTF-8"}
+    %link{rel: "stylesheet", href: "/bower_components/Materialize/dist/css/materialize.min.css"}
+    %script{src: "/bower_components/jquery/dist/jquery.min.js"}
+    %script{src:  "/bower_components/Materialize/dist/js/materialize.min.js"}
+    :css
+      .container {
+        max-width: 1280px;
+        width: 90%;
+      }
+  %body
+    %nav.indigo.darken-3{role: "navigation"}
+      .nav-wrapper.container
+        %a.brand-logo{href: "/"} Rukawa Server
+    .container
+      = yield

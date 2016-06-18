@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require 'rack'
+require 'rukawa'
+require 'rukawa/server/web'
+require 'optparse'
+
+app = Rack::Builder.app do
+  run Rukawa::Server::Web
+end
+
+options = {app: app, Host: "0.0.0.0"}
+
+opt_parser = OptionParser.new do |op|
+  op.on('-c config', 'Rukawa config')                    { |val| options[:config] = val }
+  op.on('-p port', 'Port (Default: 8959)')               { |val| options[:Port] = val.to_i }
+  op.on('-b addr', 'Address to bind (default: 0.0.0.0)') { |val| options[:Host] = val }
+  op.on('-d', 'daemonize')                               { options[:daemonize] = true }
+  op.on('-P pidfile', 'file to store PID')               { |val| options[:pid] = val }
+  op.on('-s server', 'Set Rack server handler name')     { |handler| options[:server] = handler }
+end
+opt_parser.parse!(ARGV.dup)
+
+config = options[:config] || "./rukawa.rb"
+load config if File.exist?(config)
+
+Rukawa.load_jobs
+
+Rack::Server.start(options)

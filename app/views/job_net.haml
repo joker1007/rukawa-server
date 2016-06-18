@@ -1,0 +1,56 @@
+%h2= @job_net.name
+
+:css
+  #graph-container {
+    border: solid 1px #ccc;
+    min-height: 800px;
+  }
+
+#graph-container.center-align.z-depth-2
+  .preloader-wrapper.big.active{style: "margin-top: 20px; margin-bottom: 20px;"}
+    .spinner-layer.spinner-blue-only
+      .circle-clipper.left
+        .circle
+      .gap-patch
+        .circle
+      .circle-clipper.right
+        .circle
+
+%script{src: "/js/d3.min.js"}
+%script{src: "/js/viz.js"}
+
+:javascript
+  function initGraph() {
+    var data = {"src": #{JSON.dump(@job_net.to_dot)}}
+    var worker = new Worker("/js/viz_worker.js");
+    worker.onmessage = function(e) {
+      var result = e.data;
+      var container = document.getElementById("graph-container");
+      var parser = new DOMParser();
+      var svgDoc = parser.parseFromString(result, "image/svg+xml");
+      var preloader = container.querySelector(".preloader-wrapper")
+      container.removeChild(preloader);
+      container.appendChild(svgDoc.documentElement);
+
+      var svg = d3.select("svg");
+      var inner = svg.select("g");
+      svg.attr("width", container.offsetWidth.toString() + "px");
+
+      var zoom = d3.behavior.zoom().on("zoom", function() {
+        inner.attr("transform", "translate(" + d3.event.translate + ")" +
+          "scale(" + d3.event.scale + ")");
+      });
+      svg.call(zoom);
+
+      var innerBox = inner.node().getBBox();
+      zoom
+        .translate([10, innerBox.height])
+        .event(svg);
+
+      if (svg.node().getBBox().height < container.offsetHeight) {
+        svg.attr("height", container.offsetHeight.toString() + "px");
+      }
+    }
+    worker.postMessage(data);
+  }
+  initGraph();

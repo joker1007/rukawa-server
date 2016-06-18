@@ -1,0 +1,100 @@
+# Logfile created on 2016-04-30 16:35:01 +0900 by logger.rb/53141
+I, [2016-04-30T16:35:01.594840 #77759]  INFO -- : === Start Rukawa ===
+I, [2016-04-30T16:35:01.595700 #77759]  INFO -- : Start Job1
+I, [2016-04-30T16:35:04.598083 #77759]  INFO -- : Finish Job1
+I, [2016-04-30T16:35:04.598374 #77759]  INFO -- : Start Job2
+E, [2016-04-30T16:35:04.598451 #77759] ERROR -- : Error Job2 by job2 error
+I, [2016-04-30T16:35:04.598657 #77759]  INFO -- : Start Job3
+I, [2016-04-30T16:35:08.602122 #77759]  INFO -- : Finish Job3
+I, [2016-04-30T16:35:08.602415 #77759]  INFO -- : Start InnerJob1
+I, [2016-04-30T16:35:08.602590 #77759]  INFO -- : Start Job5
+E, [2016-04-30T16:35:08.602680 #77759] ERROR -- : Error Job5 by job5 error
+I, [2016-04-30T16:35:08.602756 #77759]  INFO -- : Start InnerJob3
+I, [2016-04-30T16:35:08.602836 #77759]  INFO -- : Start Job4
+I, [2016-04-30T16:35:08.603010 #77759]  INFO -- : Finish InnerJob3
+E, [2016-04-30T16:35:09.606666 #77759] ERROR -- : Retry Job5
+I, [2016-04-30T16:35:09.606782 #77759]  INFO -- : Start Job5
+E, [2016-04-30T16:35:09.606839 #77759] ERROR -- : Error Job5 by job5 error
+I, [2016-04-30T16:35:11.605591 #77759]  INFO -- : Finish InnerJob1
+I, [2016-04-30T16:35:11.605847 #77759]  INFO -- : Finish Job4
+I, [2016-04-30T16:35:11.606094 #77759]  INFO -- : Start InnerJob2
+E, [2016-04-30T16:35:11.606175 #77759] ERROR -- : Error InnerJob2 by inner job2 error
+I, [2016-04-30T16:35:11.606368 #77759]  INFO -- : Start InnerJob4
+E, [2016-04-30T16:35:11.606533 #77759] ERROR -- : Error Job8 by Rukawa::DependencyUnsatisfied
+E, [2016-04-30T16:35:11.607999 #77759] ERROR -- : Retry Job5
+I, [2016-04-30T16:35:11.608077 #77759]  INFO -- : Start Job5
+E, [2016-04-30T16:35:11.608127 #77759] ERROR -- : Error Job5 by job5 error
+I, [2016-04-30T16:35:12.606677 #77759]  INFO -- : Finish InnerJob4
+I, [2016-04-30T16:35:12.606934 #77759]  INFO -- : Skip InnerJob5
+E, [2016-04-30T16:35:12.607144 #77759] ERROR -- : Error InnerJob6 by Rukawa::DependencyUnsatisfied
+E, [2016-04-30T16:35:13.608932 #77759] ERROR -- : Retry Job5
+I, [2016-04-30T16:35:13.609026 #77759]  INFO -- : Start Job5
+E, [2016-04-30T16:35:13.609068 #77759] ERROR -- : Error Job5 by job5 error
+I, [2016-04-30T16:35:13.609267 #77759]  INFO -- : Start Job6
+I, [2016-04-30T16:35:17.613889 #77759]  INFO -- : Finish Job6
+I, [2016-04-30T16:35:17.614143 #77759]  INFO -- : Start Job7
+I, [2016-04-30T16:35:18.618866 #77759]  INFO -- : Finish Job7
+E, [2016-04-30T16:35:18.619066 #77759] ERROR -- : Error InnerJob8 by Rukawa::DependencyUnsatisfied
+E, [2016-04-30T16:35:18.619128 #77759] ERROR -- : Error InnerJob7 by Rukawa::DependencyUnsatisfied
+E, [2016-04-30T16:35:18.619434 #77759] ERROR -- : Error InnerJob9 by Rukawa::DependencyUnsatisfied
+E, [2016-04-30T16:35:18.619616 #77759] ERROR -- : Error InnerJob10 by Rukawa::DependencyUnsatisfied
+E, [2016-04-30T16:35:18.619758 #77759] ERROR -- : Error InnerJob13 by Rukawa::DependencyUnsatisfied
+E, [2016-04-30T16:35:18.619866 #77759] ERROR -- : Error InnerJob12 by Rukawa::DependencyUnsatisfied
+E, [2016-04-30T16:35:18.620033 #77759] ERROR -- : Error InnerJob11 by Rukawa::DependencyUnsatisfied
+E, [2016-04-30T16:35:18.620152 #77759] ERROR -- : Error NestedJob1 by Rukawa::DependencyUnsatisfied
+E, [2016-04-30T16:35:18.620275 #77759] ERROR -- : Error NestedJob2 by Rukawa::DependencyUnsatisfied
+I, [2016-04-30T16:35:18.723150 #77759]  INFO -- : === Finish Rukawa ===
+E, [2016-04-30T16:35:18.727754 #77759] ERROR -- : job2 error (RuntimeError)
+/Users/joker/srcs/rukawa/sample/jobs/sample_job.rb:24:in `run'
+/Users/joker/srcs/rukawa/lib/rukawa/job.rb:74:in `do_run'
+/Users/joker/srcs/rukawa/lib/rukawa/job.rb:56:in `block in dataflow'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/dataflow.rb:64:in `block in call_dataflow'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/synchronization/mri_lockable_object.rb:38:in `block in synchronize'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/synchronization/mri_lockable_object.rb:38:in `synchronize'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/synchronization/mri_lockable_object.rb:38:in `synchronize'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/safe_task_executor.rb:19:in `execute'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/ivar.rb:170:in `safe_execute'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/future.rb:52:in `block in execute'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:348:in `run_task'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:337:in `block (3 levels) in create_worker'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:320:in `loop'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:320:in `block (2 levels) in create_worker'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:319:in `catch'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:319:in `block in create_worker'
+E, [2016-04-30T16:35:18.727904 #77759] ERROR -- : job5 error (RuntimeError)
+/Users/joker/srcs/rukawa/sample/jobs/sample_job.rb:38:in `run'
+/Users/joker/srcs/rukawa/lib/rukawa/job.rb:74:in `do_run'
+/Users/joker/srcs/rukawa/lib/rukawa/job.rb:56:in `block in dataflow'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/dataflow.rb:64:in `block in call_dataflow'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/synchronization/mri_lockable_object.rb:38:in `block in synchronize'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/synchronization/mri_lockable_object.rb:38:in `synchronize'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/synchronization/mri_lockable_object.rb:38:in `synchronize'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/safe_task_executor.rb:19:in `execute'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/ivar.rb:170:in `safe_execute'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/future.rb:52:in `block in execute'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:348:in `run_task'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:337:in `block (3 levels) in create_worker'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:320:in `loop'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:320:in `block (2 levels) in create_worker'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:319:in `catch'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:319:in `block in create_worker'
+E, [2016-04-30T16:35:18.727938 #77759] ERROR -- : inner job2 error (RuntimeError)
+/Users/joker/srcs/rukawa/sample/jobs/sample_job.rb:54:in `run'
+/Users/joker/srcs/rukawa/lib/rukawa/job.rb:74:in `do_run'
+/Users/joker/srcs/rukawa/lib/rukawa/job.rb:56:in `block in dataflow'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/dataflow.rb:64:in `block in call_dataflow'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/synchronization/mri_lockable_object.rb:38:in `block in synchronize'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/synchronization/mri_lockable_object.rb:38:in `synchronize'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/synchronization/mri_lockable_object.rb:38:in `synchronize'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/safe_task_executor.rb:19:in `execute'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/ivar.rb:170:in `safe_execute'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/future.rb:52:in `block in execute'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:348:in `run_task'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:337:in `block (3 levels) in create_worker'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:320:in `loop'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:320:in `block (2 levels) in create_worker'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:319:in `catch'
+/Users/joker/srcs/rukawa/.bundle/ruby/2.3.0/gems/concurrent-ruby-1.0.1/lib/concurrent/executor/ruby_thread_pool_executor.rb:319:in `block in create_worker'

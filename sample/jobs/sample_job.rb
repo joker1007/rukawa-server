@@ -107,3 +107,11 @@ end
 
 class NestedJob2 < SampleJob
 end
+
+module Dummy
+  class DummyJob < SampleJob
+    def run
+      puts "dummy"
+    end
+  end
+end

@@ -1,3 +1,4 @@
+require 'rukawa'
 require "rukawa/server/version"
 
 module Rukawa
@@ -5,3 +6,5 @@ module Rukawa
     # Your code goes here...
   end
 end
+
+require 'rukawa/server/job_definition'

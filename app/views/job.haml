@@ -1,0 +1,20 @@
+%h2= @job_class.name
+
+- if @job_definition.file
+  %p #{@job_definition.file}#{@job_definition.lineno ? ":" + @job_definition.lineno.to_s : ""}
+
+%pre.language-ruby.line-numbers{data: {start: @job_definition.lineno || 1}}
+  %code.language-ruby
+    - if @source_code
+      :preserve
+        #{@source_code}
+    - else
+      = "# cannot extract source code"
+
+:javascript
+  Prism.plugins.NormalizeWhitespace.setDefaults({
+    'remove-trailing': true,
+    'remove-indent': true,
+    'left-trim': true,
+    'right-trim': true,
+  });

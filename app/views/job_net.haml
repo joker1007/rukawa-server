@@ -6,6 +6,10 @@
     min-height: 800px;
   }
 
+  #graph-container .node {
+    cursor: pointer;
+  }
+
 #graph-container.center-align.z-depth-2
   .preloader-wrapper.big.active{style: "margin-top: 20px; margin-bottom: 20px;"}
     .spinner-layer.spinner-blue-only
@@ -50,6 +54,11 @@
       if (svg.node().getBBox().height < container.offsetHeight) {
         svg.attr("height", container.offsetHeight.toString() + "px");
       }
+
+      $("#graph-container .node").on("click", function(e) {
+        var name = $(e.currentTarget).find("text").text();
+        window.open('/jobs/' + name, '_blank');
+      });
     }
     worker.postMessage(data);
   }

@@ -2,14 +2,7 @@
 
 %ul.collapsible.popout{data: {collapsible: "accordion"}}
   - @job_nets.each do |jn|
-    %li
-      .collapsible-header
-        = jn.name
-        %a.jobnet-detail.secondary-content{href: job_net_path(jn.name)} Detail
-      .collapsible-body
-        %ul.collection
-          - jn.dag.each do |j|
-            %li.collection-item{style: "margin-left: 10px"}= j.name
+    = partial('job_net_list', locals: {jn: jn})
 
 :javascript
   $(".jobnet-detail").on("click", function(e) {

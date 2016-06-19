@@ -1,0 +1,9 @@
+%li
+  .collapsible-header
+    = jn.name
+    %a.jobnet-detail.secondary-content{href: job_net_path(jn.name)} Detail
+  .collapsible-body
+    %ul.collection
+      - jn.dag.jobs.each do |j|
+        %li.collection-item{style: "margin-left: 10px"}
+          %a{href: job_path(j.name)}= j.name
